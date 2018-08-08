@@ -1,0 +1,60 @@
+{% extends "blog/base.html" %}
+
+  {% block title %}UluCancer-{{post.title}}{% endblock%}
+
+  {% block content %}
+  <div id="inside-post">
+  <div class='text-in-post'>
+    <div class='title-in-post'>
+      <h1>{{post.title}}</h1>
+    </div>
+
+    <center><img src="{{ post.picture.url }}"  id="picture-in-post"/></center>
+
+    <p class='tags-in-post'>
+      Tagi:
+      {%for tag in post.tags.all%}
+      <a href="{%url 'blog:post_list_by_tag' tag.slug%}">
+        {{tag.name}}
+      </a>
+      {%if not forloop.last%}, {%endif%}
+      {%endfor%}
+    </p>
+
+    <p class="date-in-post">
+        Opublikowano {{post.publish}} przez {{post.author}}
+    </p>
+
+    <div class="only-text-in-post">
+        {{post.body|safe}}
+    </div>
+
+    </div>
+    <div style="clear:both;"></div>
+
+    <div class='send-menu'>
+
+      <a href='{%url "blog:post_share" post.id%}'>
+        <button class='send-button-in-post'>Wyślij ten post na maila</button>
+      </a>
+
+      <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"
+      data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Udostępnij</a></div>
+
+    </div>
+
+    <div style="clear:both;"></div>
+    <div class="similar_posts_proposition">
+      <h2>Podobne Posty</h2>
+      {%for post in similar_posts%}
+        <p>
+          <a href="{{post.get_absolute_url}}"> {{post.title}} </a>
+        </p>
+      {%empty%}
+        Nie ma żadnych podobnych postow
+      {%endfor%}
+    </div>
+
+    <div class="fb-comments" data-href="{{ post.build_absolute_uri }}" data-numposts="5" data-width=100%></div>
+  </div>
+{% endblock %}

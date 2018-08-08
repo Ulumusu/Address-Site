@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+{% for g in gallery %}
+    <p>{{gallery.name}}, {{gallery.pub_date}}</p>
+    {% for photo in gallery %}
+        <img src="{{gallery.photo.url}}">
+    {%endfor%}
+{%endfor%}
+
+{% endblock %}

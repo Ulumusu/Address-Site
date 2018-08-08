@@ -1,0 +1,72 @@
+{%extends 'blog/base.html'%}
+
+{% block title %}CV{% endblock%}
+
+{%block content%}
+
+<div class='text-in-post'>
+  <div class='title-in-post'>
+    <h1>Cirriculum Vitae</h1>
+  </div>
+  <br />
+  <div class="only-text-in-post">
+    <div class='important'>
+      <div class="picture-basic">
+        <img src="{{cv.picture.url}}" width="200" id="picture-in-post"/>
+      </div>
+      <div class='basic'>
+        <p>
+          {{cv.name_surname}}<br />
+          {{cv.born_date}}<br />
+          {{cv.adress}}<br />
+          {{cv.post_office_code}}<br />
+          {{cv.email}}<br />
+        </p>
+      </div>
+    </div>
+    <div style="clear:both"></div>
+    <br />
+    <br />
+    <h2 class='send-button-1'>Doświadczenie</h2>
+    <div class="list-1">
+      <p>
+      {{cv.experience|linebreaks}}
+      </p>
+    </div>
+
+    <br />
+    <h2 class='send-button-2'>Wykształcenie i dodatkowe atuty </h2>
+    <div class="list-2">
+      {{cv.education|linebreaks}}
+      <h3>Języki obce</h3>
+      <p>
+      {{ cv.language|linebreaks}}
+      </p>
+      <h3>Dodatkowe</h3>
+      <p>
+      {{cv.more_education}}
+      </p>
+    </div>
+
+    <br />
+    <h2 class='send-button-3'>Dodatkowe umiejętności i zainteresowania</h2>
+    <div class="list-3">
+      </p>
+      {{cv.skills|linebreaks}}
+      </p>
+      <h3>Zainteresowania:</h3>
+      <p>
+       {{cv.interests}}
+       </p>
+    </div>
+
+    <br />
+    <h2 class='send-button-4'>Dodatkowe informacje</h2>
+    <div class="list-4">
+
+      <a href="{{cv.links.url}}"><p>Pobierz CV w postaci pliku PDF</p></a>
+
+    </div>
+  </div>
+</div>
+{%endblock%}

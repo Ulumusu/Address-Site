@@ -1,0 +1,19 @@
+{%extends 'blog/base.html'%}
+
+{% block title %}O mnie{% endblock%}
+
+{%block content%}
+<div class='text-in-post'>
+  <div class='title-in-post'>
+    <h1>Kim jestem??</h1>
+  </div>
+  
+  <center><img src="{{about.picture.url}}" class="about-picture"></center>
+
+
+  <div class="only-text-in-post">
+    {{about.about|safe}}
+  </div>
+</div>
+
+{% endblock %}

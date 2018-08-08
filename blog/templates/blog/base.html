@@ -1,0 +1,153 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static "css/blog.css" %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Barlow&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+    <link href="{% static "css/fontello.css" %}" rel="stylesheet">
+</head>
+
+<body>
+<!-- main container -->
+<div class="status"></div>
+<div id='container'>
+  <!---base.html -->
+      <div id='menu'>
+        <div id='logo'>
+          <div class='logol'>
+            <img src={% static "img/default.png" %} / class="logo-picture">
+            <h1>UluCancer</h1>
+          </div>
+          <p id="paragraph-logo">
+            Ponieważ gdzieś trzeba się wypróżnić...
+          </p>
+        </div>
+        <img src={% static "img/one.jpg" %} id="menu-photo"/>
+      </div>
+      <div style="clear:both;"></div>
+  <!-- post_list.html -->
+    <div id="content-sidebar">
+
+        <div id="content" >
+            {% block content %}
+            {% endblock %}
+        </div>
+
+      <!-- second bar (right) -->
+        <div id="sidebar">
+
+          <div class="sidebar-one">
+                  <a href="{%url 'blog:post_list'%}">
+                  <div class='side-other'>
+                    <i class="icon-menu"></i>
+                    <p>Blog</p>
+                  </div>
+                  </a>
+
+                  <a href ="{% url "blog:cv_view"%}">
+                  <div class='side-other1'>
+                    <i class="icon-doc"></i>
+                    <p>CV</p>
+                  </div>
+                  </a>
+            </div>
+
+
+            <div class="sidebar-two">
+                <a href="https://github.com/Ulumusu">
+                <div class='side-other2'>
+                  <i class="icon-github-circled"></i>
+                  <p>Github</p>
+                </div>
+                </a>
+
+                <a href ="{% url "blog:about"%}">
+                <div class='side-other3'>
+                  <i class="icon-article"></i>
+                  <p>O sobie</p>
+                </div>
+                </a>
+            </div>
+
+
+            <div class="sidebar-three">
+                <a href="https://www.facebook.com/marek.synos">
+                <div class='side-other4'>
+                  <i class="icon-facebook"></i>
+                  <p>Facebook</p>
+                </div>
+                </a>
+
+                <a href="https://pl.linkedin.com/in/marek-syno%C5%9B-250a5515b">
+                <div class='side-other5'>
+                  <i class="icon-linkedin"></i>
+                  <p>Linkedin</p>
+                </div>
+                </a>
+            </div>
+        </div>
+
+
+  <!-- facebook comment plugin used in detail.html -->
+    <div id="fb-root"></div>
+
+
+
+    <div style="clear:both"></div>
+
+    <div id='triangle-footer'>
+        <div class="footer">
+
+          <div class="time">
+              {%load tz %}
+                {% timezone "Europe/Warsaw" %}
+                    <p>Dziś jest: {% now "jS F Y H:i" %} </p>
+              {% endtimezone %}
+          </div>
+          <div class="text-footer">
+            <p>
+              Strona została wykonana za pomocą Django w wersji 2.0.7 i JavaScript w celach
+              zdobycia namacalnego portfolio do pracy i poszerzenia własnej wiedzy. Zdjęcie
+               pobrano z internetu i jest to promocyjny obraz z  wydanej
+                9 lutego 2016 roku gry pod tytułem Firewatch.<br />
+              Publikowane treści na blogu są luźnymi przemyśleniami autora. Branie ich na poważnie grozi rakiem.<br />
+              <br />
+              Polecane strony:<br />
+              <div class="first-list">
+                <a href="https://www.python.org/"> >> Python-Official Website</a><br />
+                <a href="https://pythonprogramming.net/"> >> Python Programming Tutorial</a><br />
+                <a href="https://www.djangoproject.com/"> >> Django-Official Website</a><br />
+              </div>
+              <div class="second-list">
+                <a href="https://materiaalit.github.io/2013-oo-programming/part1/week-1/"> >> MOOC.fi-Java Tutorial</a><br />
+                <a href="https://www.geeksforgeeks.org/company-preparation/"> >> GeeksforGeeks-Company Preparation</a><br />
+                <a href="http://touchtyping.guru/"> >> TouchTyping.guru</a>
+              </div>
+
+
+            </p>
+          </div>
+        </div>
+        <div class="tree"><img src="{% static "img/two.jpg" %}"/ ></div>
+    </div>
+
+
+  </div>
+
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="{%static "js/main.js"%}"></script>
+<script src="{%static "js/facebook.js"%}"></script>
+</body>
+
+</html>

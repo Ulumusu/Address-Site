@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Podziel się postem{% endblock %}
+
+{% block content %}
+<div id='send-post-on-mail'>
+  {%if sent%}
+    <h1>E-mail został wysłany</h1>
+    <p>
+      "{{post.title}}" został wysłany do "{{form.cleaned_data.to}}"
+    </p>
+  {%else%}
+    <h1>Podeślij "{{ post.title }}" na maila</h1>
+    <form action="." method="post">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <input type="submit" value="Wyślij" class="send-button">
+    </form>
+  {%endif%}
+</div>
+{%endblock%}
