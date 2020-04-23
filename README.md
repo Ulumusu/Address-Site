@@ -6,4 +6,6 @@ This is my code for own blog
 http://ulumusu.pythonanywhere.com/
 
 
-![](images/1.png)
+![](images/3.png)
+
+![](images/2.png)
